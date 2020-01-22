@@ -9,9 +9,12 @@ namespace WaterDetector
         static void Main(string[] args)
         {
             Random r = new Random();
+            EventSubscriber sub = new EventSubscriber();
             WaterTank wt1 = new WaterTank(100, "WT1");
             WaterTank wt2 = new WaterTank(10, "WT2");
             WaterTank wt3 = new WaterTank(500, "WT3");
+            wt2.ValueHasChanged += sub.OnValueChanged;
+            wt2.IsFull += sub.OnIsFull;
             WaterTank wt4 = new WaterTank(50, "WT4");
             WaterTank wt5 = new WaterTank(25, "WT5");
             while (true)
